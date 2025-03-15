@@ -1,0 +1,39 @@
+.menu{
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 80vw;
+    margin-top: 70px;
+    
+}
+
+.options{
+    display: flex;
+    gap: 50px;
+    padding: 20px;
+    
+}
+
+h1, h2{
+    font-family: "Kdam Thmor Pro", sans-serif;
+    font-weight: 400;
+}
+
+h2{
+    font-size: 48px;
+}
+h1{
+    font-size: 64px;
+    color: #50514F;
+}
+
+button{
+    padding: 10px;
+    background-color: #B4ADEA;
+    color: white;
+    width: 20vw;
+    height: 30vh;
+    border: 0;
+    border-radius: 10px;
+}
