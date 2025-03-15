@@ -1,9 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginUserComponent } from './users/UI/pages/login-user/login-user.component';
+import { OrderMenuComponent } from './order/UI/components/order-menu/order-menu.component';
+import { OrderPageComponent } from './order/UI/pages/order-page/order-page.component';
+import { LiquidsoapPageComponent } from './soaps/UI/pages/liquidsoap-page/liquidsoap-page.component';
+import { PowdersoapPageComponent } from './soaps/UI/pages/powdersoap-page/powdersoap-page.component';
 
 const routes: Routes = [
-  {path: '', component: LoginUserComponent}
+  {path: '', component: LoginUserComponent},
+  {path: 'menu', component: OrderPageComponent},
+  {path: 'liquid', component: LiquidsoapPageComponent},
+  {path: 'powder', component: PowdersoapPageComponent}
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

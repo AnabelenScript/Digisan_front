@@ -1,0 +1,76 @@
+.error-escenario {
+    background-color: rgba(64, 64, 64, 0.345);
+    width: 100vw;
+    height: 100vh;
+    position: fixed; 
+    top: 0;
+    left: 0;
+    z-index: 1000; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+  
+h1 {
+    font-family: "Kdam Thmor Pro", sans-serif;
+    font-weight: 400;
+    font-size: 48px;
+}
+
+.error-container {
+    background-color: #ffffff;
+    width: 50vw;
+    height: 50vh;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+}
+
+@keyframes shake {
+    0%, 100% {
+        rotate: 0deg;
+    }
+    25% {
+        rotate: 10deg;
+    }
+    50% {
+        rotate: -10deg;
+    }
+    75% {
+        rotate: 5deg;
+    }
+}
+
+.button {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    padding: 15px 20px;
+    background-color: #F53844;
+    border: none;
+    color: #e8e8e8;
+    font-size: 48px;
+    font-weight: 600;
+    border-radius: 50px;
+    cursor: not-allowed;
+    overflow: hidden;
+    transition: all 0.3s ease cubic-bezier(0.23, 1, 0.320, 1);
+    animation: shake 1s ease-in-out infinite alternate;
+}
+
+
+.button span {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    font-family: "Kdam Thmor Pro", sans-serif;
+}
+
