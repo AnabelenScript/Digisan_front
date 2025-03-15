@@ -1,0 +1,13 @@
+<div class="liquid-container">
+    <h1 class="liquid-page-title">
+        Seleccione la cantidad de jabón
+    </h1>
+    <div class="options-container">
+        <button [class.active]="selectedButton === '250ml'" (click)="selectButton('250ml')">250ml</button>
+        <button [class.active]="selectedButton === '500ml'" (click)="selectButton('500ml')">500ml</button>
+        <button [class.active]="selectedButton === '1L'" (click)="selectButton('1L')">1L</button>
+    </div>
+    <button class="start" (click)="start()">Comenzar</button>
+</div>
+
+<app-soap-alert *ngIf="showAlert"></app-soap-alert>

@@ -1,0 +1,58 @@
+.liquid-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    margin-top: 70px;
+}
+
+h1, button {
+    font-family: "Kdam Thmor Pro", sans-serif;
+    font-weight: 400;
+}
+
+.liquid-page-title {
+    font-size: 64px;
+}
+
+.options-container {
+    gap: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.options-container button {
+    padding: 10px;
+    color: #50514F;
+    width: 10vw;
+    height: 14vh;
+    border: solid 3px #5e5e5e8e;
+    border-radius: 10px;
+    background-color: transparent;
+    font-size: 48px;
+    transition: all 0.3s ease;
+}
+
+.start {
+    padding: 10px;
+    color: white;
+    width: 15vw;
+    height: 14vh;
+    border-radius: 10px;
+    background-color: #B4ADEA;
+    font-size: 50px;
+    margin-top: 40px;
+}
+
+button:hover {
+    background-color: #a194ff;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.options-container button.active {
+    border: #2c2c2c solid 3px; 
+    box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.3); 
+}
+
