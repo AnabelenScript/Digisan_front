@@ -1,37 +1,31 @@
-<div class="login-container">
-    <h2>Iniciar Sesión</h2>
-    <form action="#" method="POST">
-        <input type="text" name="username" placeholder="Usuario" required>
-        <input type="password" name="password" placeholder="Contraseña" required>
-<button class="c-button c-button--gooey">
-    Hover me
-    <div class="c-button__blobs">
-      <div></div>
-      <div></div>
-      <div></div>
-    </div>
-  </button>
-  <svg
-    style="display: block; height: 0; width: 0;"
-    version="1.1"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <defs>
-      <filter id="goo">
-        <feGaussianBlur
-          result="blur"
-          stdDeviation="10"
-          in="SourceGraphic"
-        ></feGaussianBlur>
-        <feColorMatrix
-          result="goo"
-          values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7"
-          mode="matrix"
-          in="blur"
-        ></feColorMatrix>
-        <feBlend in2="goo" in="SourceGraphic"></feBlend>
-      </filter>
-    </defs>
-  </svg>  
-    </form>
+
+<body class="body">
+<div class="wrapper">
+  <div class="card-switch">
+      <label class="switch">
+         <input type="checkbox" class="toggle">
+         <span class="slider"></span>
+         <span class="card-side"></span>
+         <div class="flip-card__inner">
+            <div class="flip-card__front">
+               <div class="title">Log in</div>
+               <form class="flip-card__form" action="">
+                  <input class="flip-card__input" name="email" placeholder="Email" type="email">
+                  <input class="flip-card__input" name="password" placeholder="Password" type="password">
+                  <button class="flip-card__btn">Let`s go!</button>
+               </form>
+            </div>
+            <div class="flip-card__back">
+               <div class="title">Sign up</div>
+               <form class="flip-card__form" action="">
+                  <input class="flip-card__input" placeholder="Name" type="name">
+                  <input class="flip-card__input" name="email" placeholder="Email" type="email">
+                  <input class="flip-card__input" name="password" placeholder="Password" type="password">
+                  <button class="flip-card__btn">Confirm!</button>
+               </form>
+            </div>
+         </div>
+      </label>
+  </div>   
 </div>
+</body>
