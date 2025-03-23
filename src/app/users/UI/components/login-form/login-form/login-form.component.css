@@ -1,10 +1,10 @@
-/* From Uiverse.io by andrew-demchenk0 */ 
+
 
 .wrapper {
   font-family: "Kdam Thmor Pro", sans-serif;
   font-weight: 400;
   margin-top: 120px;
-  --input-focus: #B4ADEA;
+  --input-focus: #0067c7;
   --font-color: #323232;
   --font-color-sub: #666;
   --bg-color: #fff;
@@ -105,13 +105,11 @@
 /* card */ 
 
 .flip-card__inner {
-  width: 350px;
-  height: 350px;
+  width: 420px;
+  height: 420px;
   position: relative;
   background-color: transparent;
   perspective: 1000px;
-    /* width: 100%;
-    height: 100%; */
   text-align: center;
   transition: transform 0.8s;
   transform-style: preserve-3d;
@@ -126,8 +124,8 @@
 }
 .flip-card__front{
   margin-left: 2%;
-  width: 89%;
-  height: 400px;
+  width: 91%;
+  height: 420px;
 }
 
 
@@ -139,18 +137,18 @@
   justify-content: center;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
-  background-color: #B4ADEA;
+  background-color: #3A85CB;
   gap: 20px;
   border-radius: 5px;
-  border: 2px solid var(--main-color);
-  box-shadow: 4px 4px var(--main-color);
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.305);
+  
 }
 
 .flip-card__back {
   right: -1%;
   transform: rotateY(180deg);
   width: 95%;
-  height: 400px;
+  height: 420px;
 }
 
 .flip-card__form {
@@ -162,7 +160,7 @@
 
 .title {
   margin: 20px 0 20px 0;
-  font-size: 40px;
+  font-size: 45px;
   font-weight: 900;
   text-align: center;
   color: white;
@@ -174,16 +172,16 @@
 }
 
 .flip-card__input {
-  width: 270px;
+  width: 300px;
   height: 40px;
   border-radius: 5px;
-  border: 2px solid var(--main-color);
   background-color: var(--bg-color);
-  box-shadow: 4px 4px var(--main-color);
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.305);
   font-size: 20px;
   color: var(--font-color);
   padding: 5px 10px;
   outline: none;
+  border: 0;
 }
 
 .flip-card__input::placeholder {
@@ -191,26 +189,25 @@
   opacity: 0.8;
 }
 
-.flip-card__input:focus {
-  border: 2px solid var(--input-focus);
-}
 
 .flip-card__btn:active, .button-confirm:active {
-  box-shadow: 0px 0px var(--main-color);
   transform: translate(3px, 3px);
+}
+.flip-card__btn:hover{
+  background-color: #d0e8ff;
 }
 
 .flip-card__btn {
   margin: 20px 0 20px 0;
-  width: 120px;
+  width: 200px;
   height: 40px;
   border-radius: 5px;
-  border: 2px solid var(--main-color);
   background-color: var(--bg-color);
-  box-shadow: 4px 4px var(--main-color);
   font-size: 20px;
   font-weight: 600;
   color: var(--font-color);
+  border: 0;
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.336);
   cursor: pointer;
 } 
 

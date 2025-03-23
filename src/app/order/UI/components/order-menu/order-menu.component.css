@@ -5,7 +5,9 @@
     align-items: center;
     width: 80vw;
     margin-top: 70px;
-    
+    background-color: #F7FDFF66;
+    padding: 30px;
+    border-radius: 10px;
 }
 
 .options{
@@ -30,14 +32,15 @@ h1{
 
 button{
     padding: 10px;
-    background-color: #B4ADEA;
+    background-color: #3A85CB;
     color: white;
     width: 20vw;
     height: 30vh;
     border: 0;
     border-radius: 10px;
+    margin-bottom: 35px;
 }
 button:hover{
-    background-color: #a194ff;
+    background-color: #2b74b8;
     box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
 }
