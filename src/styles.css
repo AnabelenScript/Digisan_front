@@ -7,5 +7,7 @@ body{
     align-items: center;
     display: flex;
     flex-direction: column;
-    background-color: #FDFFF7;
+    background-image: url('/assets/Rectangle.jpg');
+  background-size: cover; 
+  background-repeat: no-repeat; 
 }
