@@ -15,6 +15,8 @@ import { PowdersoapFormComponent } from './soaps/UI/components/powdersoap-form/p
 import { PowdersoapPageComponent } from './soaps/UI/pages/powdersoap-page/powdersoap-page.component';
 import { SoapAlertComponent } from './soaps/UI/components/soap-alert/soap-alert.component';
 import { RechargeAlertComponent } from './soaps/UI/components/recharge-alert/recharge-alert.component';
+import { CreateFormComponent } from './soaps/UI/components/create-form/create-form.component';
+import { CreatePageComponent } from './soaps/UI/pages/create-page/create-page.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { RechargeAlertComponent } from './soaps/UI/components/recharge-alert/rec
     PowdersoapFormComponent,
     PowdersoapPageComponent,
     SoapAlertComponent,
-    RechargeAlertComponent
+    RechargeAlertComponent,
+    CreateFormComponent,
+    CreatePageComponent
   ],
   imports: [
     BrowserModule,

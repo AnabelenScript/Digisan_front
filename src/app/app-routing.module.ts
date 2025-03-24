@@ -5,12 +5,14 @@ import { OrderMenuComponent } from './order/UI/components/order-menu/order-menu.
 import { OrderPageComponent } from './order/UI/pages/order-page/order-page.component';
 import { LiquidsoapPageComponent } from './soaps/UI/pages/liquidsoap-page/liquidsoap-page.component';
 import { PowdersoapPageComponent } from './soaps/UI/pages/powdersoap-page/powdersoap-page.component';
+import { CreatePageComponent } from './soaps/UI/pages/create-page/create-page.component';
 
 const routes: Routes = [
   {path: '', component: LoginUserComponent},
   {path: 'menu', component: OrderPageComponent},
   {path: 'liquid', component: LiquidsoapPageComponent},
-  {path: 'powder', component: PowdersoapPageComponent}
+  {path: 'powder', component: PowdersoapPageComponent},
+  {path: 'createsoap', component: CreatePageComponent}
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
