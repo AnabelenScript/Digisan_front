@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Users } from '../../../../domain/models/users';
 import { UserService } from '../../../../infraestructure/users_service';
-import { log } from 'console';
 
 @Component({
   selector: 'app-login-form',
@@ -23,39 +22,45 @@ export class LoginFormComponent {
     private router: Router
   ){}
 
-  login(): void{
+  login(): void {
     console.log("entre a login con el siguiente usuario: ", this.user);
-    
+
     this.userService.login(this.user.Email, this.user.Contrasena).subscribe(
       response => {
-        console.log("respuestita" + response);
-        
-        this.router.navigate(["/menu"])
+        console.log("Respuesta recibida: ", response);
+
+        const token = response.token;
+        const usuario = response.user;
+
+        localStorage.setItem('token', token);
+        localStorage.setItem('user', JSON.stringify(usuario));
+        if (usuario.Id_Rol === 1) {
+          this.router.navigate(["/menu"]);
+        } else if (usuario.Id_Rol === 2) {
+          this.router.navigate(["/dashboard"]);
+        } else {
+          alert("Eres un admin");
+        }
       },
       error => {
-        alert('ñopi')
-        console.error("error" + error);
-        
+        alert('Credenciales incorrectas');
+        console.error("Error en login: ", error);
       }
-    )
+    );
   }
 
-
-  register():void {
+  register(): void {
     console.log("entre a registro con el user:", this.user);
 
     this.userService.create(this.user).subscribe(
       response => {
-        console.log("oliwiRegistro");
-        console.log("respuestita" + response);
-        
-        this.login()
+        console.log("Registro exitoso: ", response);
+        this.login(); 
       },
       error => {
-        alert('ñopi')
-        console.error("errorsito ito eto e paraa compronbar " + error);
+        alert('Error en registro');
+        console.error("Error en registro: ", error);
       }
-    )
+    );
   }
-
 }

@@ -29,10 +29,9 @@ export class UserService implements UserGateway {
         return this.http.put<Users>(`${this.apiURL}/users/${id}`, iusers)
     }
 
-    login(Email: string, Contrasena: string): Observable<{ token: string }> {
-        console.log("eto etoi loh¡gueando" + { Email: Email, Contraseña: Contrasena });
-        return this.http.post<{ token: string }>(`${this.apiURL}/login`, { Email: Email, Contraseña: Contrasena });
+    login(Email: string, Contrasena: string): Observable<{ token: string, user: Users }> {
+        console.log("eto etoi loh¡gueando", { Email, Contrasena });
+        return this.http.post<{ token: string, user: Users }>(`${this.apiURL}/login`, { Email, Contrasena });
     }
-
-   
+    
 }
