@@ -5,14 +5,14 @@
     align-items: center;
     width: 80vw;
     margin-top: 70px;
-    background-color: #F7FDFF66;
+    background-color: #f7fdff31;
     padding: 30px;
     border-radius: 10px;
 }
 
 .options{
     display: flex;
-    gap: 50px;
+    gap: 70px;
     padding: 20px;
     
 }
@@ -27,18 +27,27 @@ h2{
 }
 h1{
     font-size: 64px;
-    color: #50514F;
+    color: #000000;
 }
 
 button{
     padding: 10px;
-    background-color: #3A85CB;
     color: white;
-    width: 20vw;
-    height: 30vh;
+    width: 18vw;
+    height: 38vh;
     border: 0;
-    border-radius: 10px;
+    border-radius: 18px;
     margin-bottom: 35px;
+}
+
+.liquid-option{
+    background-image:url('/assets/liquido.jpg');
+    background-size: cover;
+}
+
+.powder-option{
+    background-image: url('/assets/polvo.jpg');
+    background-size: cover;
 }
 button:hover{
     background-color: #2b74b8;

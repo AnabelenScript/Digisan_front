@@ -17,6 +17,7 @@ import { SoapAlertComponent } from './soaps/UI/components/soap-alert/soap-alert.
 import { RechargeAlertComponent } from './soaps/UI/components/recharge-alert/recharge-alert.component';
 import { CreateFormComponent } from './soaps/UI/components/create-form/create-form.component';
 import { CreatePageComponent } from './soaps/UI/pages/create-page/create-page.component';
+import { NavbarComponent } from './shared/navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { CreatePageComponent } from './soaps/UI/pages/create-page/create-page.co
     SoapAlertComponent,
     RechargeAlertComponent,
     CreateFormComponent,
-    CreatePageComponent
+    CreatePageComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
