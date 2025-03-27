@@ -1,0 +1,23 @@
+<div class="container">
+    <table>
+      <thead>
+        <tr>
+          <th>Marca</th>
+          <th>Nombre</th>
+          <th>Tipo</th>
+          <th>Densidad (g/ml)</th>
+          <th>Precio ($)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let soap of soaps">
+          <td>{{ soap.Marca }}</td>
+          <td>{{ soap.Nombre }}</td>
+          <td>{{ soap.Tipo }}</td>
+          <td>{{ soap.Densidad }}</td>
+          <td>{{ soap.Precio | currency }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

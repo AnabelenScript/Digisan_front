@@ -3,16 +3,16 @@
   
   <div class="form">
     <label for="marca">Marca</label>
-    <input type="text" id="marca" placeholder="Ej. Ariel">
+    <input type="text" id="marca" [(ngModel)]="marca" placeholder="Ej. Ariel">
   </div>
-
+  
   <div class="form">
     <label for="nombreJabon">Nombre del jabón</label>
-    <input type="text" id="nombreJabon" placeholder="Ej. Ariel">
+    <input type="text" id="nombreJabon" [(ngModel)]="nombre" placeholder="Ej. RevitaColor">
   </div>
 
   <div class="soap-type">
-    <label for="">Tipo de jabón</label>
+    <label>Tipo de jabón</label>
     <div class="soap-checkbox">
       <div class="check">
         <div class="checkbox-wrapper">
@@ -23,7 +23,6 @@
         </div>
         <label for="liquido">Líquido</label>
       </div>
-
       <div class="check">
         <div class="checkbox-wrapper">
           <input type="checkbox" id="polvo" [checked]="tipoJabon === 'polvo'" (change)="seleccionarTipo('polvo')">
@@ -39,14 +38,14 @@
   <div class="check2">
     <div class="form2">
       <label for="precio">Precio [$/L]</label>
-      <input type="text" id="precio">
+      <input type="number" id="precio" [(ngModel)]="precio">
     </div>
     <div class="form2">
       <label for="densidad">Densidad [g/ml]</label>
-      <input type="text" id="densidad">
+      <input type="number" id="densidad" [(ngModel)]="densidad">
     </div>
   </div>
-  <button class="button"> Guardar
-  </button>
 
+  <button class="button" (click)="guardarJabon()"> Guardar </button>
 </div>
+

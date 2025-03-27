@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { SoapService } from '../../../infraestructure/soaps_service';
+import { Soaps } from '../../../domain/models/soaps';
 
 @Component({
   selector: 'app-create-form',
@@ -6,13 +8,54 @@ import { Component } from '@angular/core';
   styleUrls: ['./create-form.component.css']
 })
 export class CreateFormComponent {
-  tipoJabon: string = ''; // Solo se podrá seleccionar un tipo de jabón
+  tipoJabon: string = ''; 
+  marca: string = '';
+  nombre: string = '';
+  precio: number | null = null;
+  densidad: number | null = null;
+
+  constructor(private soapService: SoapService) {}
 
   seleccionarTipo(tipo: string) {
     if (this.tipoJabon === tipo) {
-      this.tipoJabon = ''; // Si se vuelve a hacer clic en el mismo, se deselecciona
+      this.tipoJabon = '';
     } else {
-      this.tipoJabon = tipo; // Si es diferente, se selecciona este tipo
+      this.tipoJabon = tipo; 
     }
+  }
+
+  guardarJabon(): void {
+    if (!this.marca || !this.nombre || !this.precio || !this.densidad) {
+      alert('Todos los campos son obligatorios.');
+      return;
+    }
+
+    const nuevoJabon: Soaps = {
+      Id: 0, // Se generará en el backend
+      Nombre: this.nombre,
+      Marca: this.marca,
+      Tipo: this.tipoJabon,
+      Precio: this.precio,
+      Densidad: this.densidad
+    };
+
+    this.soapService.create(nuevoJabon).subscribe(
+      (response) => {
+        alert('✅ Jabón agregado exitosamente.');
+        this.limpiarFormulario();
+      },
+      (error) => {
+        console.error('❌ Error al agregar jabón:', error);
+        alert('Hubo un error al guardar el jabón.');
+      }
+    );
+  }
+
+  limpiarFormulario(): void {
+    this.marca = '';
+    this.nombre = '';
+    this.tipoJabon = 'liquido';
+    this.precio = null;
+    this.densidad = null;
   }
 }

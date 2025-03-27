@@ -24,7 +24,33 @@
     font-weight: 400;
     font-size: 22px;
 
+
 }
+
+  .menu__link {
+    color: #000000;
+    line-height: 2;
+    position: relative;
+    cursor: pointer;
+  }
+  
+  .menu__link::before {
+    content: '';
+    width: 100%;
+    height: 2px;
+    border-radius: 2px;
+    background-color: #000000;
+    position: absolute;
+    bottom: -.5rem;
+    left: 0;
+    transition: transform .4s, opacity .4s;
+    opacity: 0;
+  }
+  
+  .menu__link:hover::before {
+    transform: translateY(-.55rem);
+    opacity: 1;
+  }
 
 img{
     width: 3%;

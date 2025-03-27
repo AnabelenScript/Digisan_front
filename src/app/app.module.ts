@@ -18,6 +18,8 @@ import { RechargeAlertComponent } from './soaps/UI/components/recharge-alert/rec
 import { CreateFormComponent } from './soaps/UI/components/create-form/create-form.component';
 import { CreatePageComponent } from './soaps/UI/pages/create-page/create-page.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
+import { SoapsTableComponent } from './soaps/UI/components/soaps-table/soaps-table.component';
+import { SoapsPageComponent } from './soaps/UI/pages/soaps-page/soaps-page.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,9 @@ import { NavbarComponent } from './shared/navbar/navbar.component';
     RechargeAlertComponent,
     CreateFormComponent,
     CreatePageComponent,
-    NavbarComponent
+    NavbarComponent,
+    SoapsTableComponent,
+    SoapsPageComponent
   ],
   imports: [
     BrowserModule,
