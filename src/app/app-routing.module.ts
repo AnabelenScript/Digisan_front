@@ -7,6 +7,8 @@ import { LiquidsoapPageComponent } from './soaps/UI/pages/liquidsoap-page/liquid
 import { PowdersoapPageComponent } from './soaps/UI/pages/powdersoap-page/powdersoap-page.component';
 import { CreatePageComponent } from './soaps/UI/pages/create-page/create-page.component';
 import { SoapsPageComponent } from './soaps/UI/pages/soaps-page/soaps-page.component';
+import { StartPageComponent } from './shared/start-page/start-page.component';
+import { ConectionPageComponent } from './users/UI/pages/conection-page/conection-page.component';
 
 const routes: Routes = [
   {path: '', component: LoginUserComponent},
@@ -14,7 +16,9 @@ const routes: Routes = [
   {path: 'liquid', component: LiquidsoapPageComponent},
   {path: 'powder', component: PowdersoapPageComponent},
   {path: 'createsoap', component: CreatePageComponent},
-  {path: 'soaps', component: SoapsPageComponent}
+  {path: 'soaps', component: SoapsPageComponent},
+  {path: 'dashboard', component: StartPageComponent},
+  {path: 'connection', component: ConectionPageComponent}
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
