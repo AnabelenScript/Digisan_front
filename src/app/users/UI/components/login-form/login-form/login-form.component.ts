@@ -14,7 +14,7 @@ export class LoginFormComponent {
     Nombre: "",
     Email: "",
     Contrasena: "",
-    Id_Rol: 0
+    rol: 0
   }
 
   constructor(
@@ -31,15 +31,14 @@ export class LoginFormComponent {
 
         const token = response.token;
         const usuario = response.user;
-
         localStorage.setItem('token', token);
         localStorage.setItem('user', JSON.stringify(usuario));
-        if (usuario.Id_Rol === 1) {
-          this.router.navigate(["/menu"]);
-        } else if (usuario.Id_Rol === 2) {
+        if (usuario.rol === 1) {
+          alert("Eres un usuario");
           this.router.navigate(["/dashboard"]);
-        } else {
+        } else if (usuario.rol === 2) {
           alert("Eres un admin");
+          this.router.navigate(["/soaps"]);
         }
       },
       error => {

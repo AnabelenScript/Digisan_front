@@ -3,5 +3,5 @@ export interface Users {
     Nombre: string
     Email: string
     Contrasena: string
-    Id_Rol: number
+    rol: number
 }

@@ -20,6 +20,9 @@ import { CreatePageComponent } from './soaps/UI/pages/create-page/create-page.co
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { SoapsTableComponent } from './soaps/UI/components/soaps-table/soaps-table.component';
 import { SoapsPageComponent } from './soaps/UI/pages/soaps-page/soaps-page.component';
+import { StartPageComponent } from './shared/start-page/start-page.component';
+import { ConectionFormComponent } from './users/UI/components/conection-form/conection-form.component';
+import { ConectionPageComponent } from './users/UI/pages/conection-page/conection-page.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +41,10 @@ import { SoapsPageComponent } from './soaps/UI/pages/soaps-page/soaps-page.compo
     CreatePageComponent,
     NavbarComponent,
     SoapsTableComponent,
-    SoapsPageComponent
+    SoapsPageComponent,
+    StartPageComponent,
+    ConectionFormComponent,
+    ConectionPageComponent
   ],
   imports: [
     BrowserModule,
