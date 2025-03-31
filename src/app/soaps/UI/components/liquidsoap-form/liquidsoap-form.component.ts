@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AlertsService } from '../../../../alerts/infrastructure/alerts.service';
 
 @Component({
   selector: 'app-liquidsoap-form',
@@ -9,14 +10,13 @@ export class LiquidsoapFormComponent {
   selectedButton: string = '';
   showAlert: boolean = false; 
 
+  constructor(private alertService: AlertsService){}
+
   selectButton(button: string) {
     this.selectedButton = this.selectedButton === button ? '' : button;
   }
 
   start() {
-    this.showAlert = true;
-    setTimeout(() => {
-      this.showAlert = false;
-    }, 10000);
+    this.alertService.alertLoading('liquido')
   }
 }
