@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RechargeAlertComponent } from "../recharge-alert/recharge-alert.component";
+import { AlertsService } from '../../../../alerts/infrastructure/alerts.service';
 
 @Component({
   selector: 'app-powdersoap-form',
@@ -11,14 +11,13 @@ export class PowdersoapFormComponent {
   selectedButton: string = '';
   showAlert: boolean = false; 
 
+  constructor(private alertService: AlertsService){}
+
   selectButton(button: string) {
     this.selectedButton = this.selectedButton === button ? '' : button;
   }
 
   start() {
-    this.showAlert = true;
-    setTimeout(() => {
-      this.showAlert = false;
-    }, 10000);
+    this.alertService.alertLoading("en polvo")
   }
 }

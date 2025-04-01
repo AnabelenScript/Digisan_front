@@ -9,6 +9,7 @@ import { CreatePageComponent } from './soaps/UI/pages/create-page/create-page.co
 import { SoapsPageComponent } from './soaps/UI/pages/soaps-page/soaps-page.component';
 import { StartPageComponent } from './shared/start-page/start-page.component';
 import { ConectionPageComponent } from './users/UI/pages/conection-page/conection-page.component';
+import { LoadAnimationComponent } from './alerts/UI/load-animation/load-animation.component';
 
 const routes: Routes = [
   {path: '', component: LoginUserComponent},
@@ -18,7 +19,8 @@ const routes: Routes = [
   {path: 'createsoap', component: CreatePageComponent},
   {path: 'soaps', component: SoapsPageComponent},
   {path: 'dashboard', component: StartPageComponent},
-  {path: 'connection', component: ConectionPageComponent}
+  {path: 'connection', component: ConectionPageComponent},
+  {path: 'load', component: LoadAnimationComponent}
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
