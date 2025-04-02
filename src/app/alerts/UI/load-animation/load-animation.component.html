@@ -2,3 +2,13 @@
 <button (click)="alertLoad('en polvo')">Load Powder</button> 
 <button (click)="alertWarning('En polvo', 0291031)">Warning</button> 
 <button (click)="alertWrong( )">Wrong</button> 
+
+<div>
+    <ul>
+        <li *ngFor="let mensaje of messages">
+          {{ mensaje }}
+        </li>
+      </ul>
+  </div>
+  
+  

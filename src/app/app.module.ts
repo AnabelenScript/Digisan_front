@@ -23,6 +23,7 @@ import { SoapsPageComponent } from './soaps/UI/pages/soaps-page/soaps-page.compo
 import { StartPageComponent } from './shared/start-page/start-page.component';
 import { ConectionFormComponent } from './users/UI/components/conection-form/conection-form.component';
 import { ConectionPageComponent } from './users/UI/pages/conection-page/conection-page.component';
+import { LoadAnimationComponent } from './alerts/UI/load-animation/load-animation.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { ConectionPageComponent } from './users/UI/pages/conection-page/conectio
     SoapsPageComponent,
     StartPageComponent,
     ConectionFormComponent,
-    ConectionPageComponent
+    ConectionPageComponent,
+    LoadAnimationComponent
   ],
   imports: [
     BrowserModule,

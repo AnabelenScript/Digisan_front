@@ -1,15 +1,32 @@
-import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import * as THREE from 'three';
 import { createNoise3D } from 'simplex-noise';
 import { AlertsService } from '../../infrastructure/alerts.service';
+import { WebSocketService } from '../../infrastructure/websocket_service';
 
 @Component({
   selector: 'app-load-animation',
   templateUrl: './load-animation.component.html',
   styleUrls: ['./load-animation.component.css']
 })
-export class LoadAnimationComponent implements AfterViewInit {
+export class LoadAnimationComponent implements AfterViewInit, OnInit {
   @ViewChild('canvasContainer', { static: true }) canvasContainer!: ElementRef;
+
+  messages: string[] = [];
+
+  constructor(
+    private alertService: AlertsService,
+    private wsService: WebSocketService 
+  ) {}
+
+  ngOnInit(): void {
+  
+    this.wsService.connect(); 
+    this.wsService.messages$.subscribe(message => {
+      console.log('Mensaje recibido en LoadAnimationComponent:', message);
+      this.messages.push(message);
+    });
+  }
 
   ngAfterViewInit() {
     /* const container = this.canvasContainer.nativeElement;
@@ -98,15 +115,15 @@ export class LoadAnimationComponent implements AfterViewInit {
     render(); */
   }
 
-  constructor(private alertService: AlertsService){}
+  alertLoad(liquid: string) {
+    this.alertService.alertLoading(liquid);
+  }
 
-  alertLoad(liquid: string){
-    this.alertService.alertLoading(liquid)
+  alertWarning(tipo: string, codigoMaquina: number) {
+    this.alertService.alertLowLevel(tipo, codigoMaquina);
   }
-  alertWarning(tipo: string, codigoMaquina: number){
-    this.alertService.alertLowLevel(tipo, codigoMaquina)
-  }
-  alertWrong(){
-    this.alertService.alertWrong()
+
+  alertWrong() {
+    this.alertService.alertWrong();
   }
 }

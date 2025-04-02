@@ -14,7 +14,8 @@ export class LoginFormComponent {
     Nombre: "",
     Email: "",
     Contrasena: "",
-    rol: 0
+    rol: 0,
+    Codigo_Identificador: ""
   }
 
   constructor(
@@ -47,19 +48,9 @@ export class LoginFormComponent {
       }
     );
   }
-
   register(): void {
-    console.log("entre a registro con el user:", this.user);
-
-    this.userService.create(this.user).subscribe(
-      response => {
-        console.log("Registro exitoso: ", response);
-        this.login(); 
-      },
-      error => {
-        alert('Error en registro');
-        console.error("Error en registro: ", error);
-      }
-    );
-  }
+    console.log("Guardando usuario en localStorage:", this.user);
+    localStorage.setItem('new-user', JSON.stringify(this.user));
+    this.router.navigate(['/connection']); 
+}
 }
