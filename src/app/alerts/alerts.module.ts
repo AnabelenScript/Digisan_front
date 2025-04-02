@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+/*import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LoadAnimationComponent } from './UI/load-animation/load-animation.component';
 
@@ -9,10 +9,11 @@ import { LoadAnimationComponent } from './UI/load-animation/load-animation.compo
     LoadAnimationComponent
   ],
   imports: [
-    CommonModule
+   CommonModule
   ],
   exports: [
     LoadAnimationComponent
-  ]
+  ],
+  schemas: [NO_ERRORS_SCHEMA]
 })
-export class AlertsModule { }
+export class AlertsModule { }*/

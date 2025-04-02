@@ -4,4 +4,5 @@ export interface Users {
     Email: string
     Contrasena: string
     rol: number
+    Codigo_Identificador : string
 }
