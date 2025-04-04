@@ -1,24 +1,26 @@
-.start-page{
+/* Estilos generales */
+.start-page {
     display: flex;
     flex-direction: column;
     width: 50vw;
     background-color: #f7fdff46;
     padding: 60px;
     margin-top: 100px;
+    margin-bottom: 50px;
     border-radius: 20px;
     gap: 50px;
 }
 
-img{
+img {
     width: 40%;
 }
 
-.start-components{
+.start-components {
     display: flex;
-   gap: 80px;
+    gap: 80px;
 }
 
-button{
+button {
     height: 130px;
     border: 0;
     background-color: #3A85CB;
@@ -30,12 +32,69 @@ button{
     cursor: pointer;
 }
 
-button:hover{
+button:hover {
     background-color: #1e5c95;
 }
 
-h1{
+h1 {
     font-family: "Kdam Thmor Pro", sans-serif;
     font-weight: 400;
     font-size: 78px;
+}
+
+/* Media Queries para hacer los estilos responsivos */
+
+@media (max-width: 1024px) {
+    /* iPad en modo paisaje */
+    .start-page {
+        width: 70vw; /* Ajusta el ancho */
+        padding: 40px; /* Reduce el padding */
+        margin-top: 50px;
+        margin-bottom: 40px;
+    }
+
+    img {
+        width: 30%; /* Ajusta el tamaño de la imagen */
+    }
+
+    .start-components {
+        gap: 40px; /* Reduce el espacio entre los componentes */
+    }
+
+    button {
+        height: 100px; /* Reduce el tamaño del botón */
+        font-size: 40px; /* Reduce el tamaño de la fuente */
+    }
+
+    h1 {
+        font-size: 60px; /* Ajusta el tamaño del encabezado */
+    }
+}
+
+@media (max-width: 768px) {
+    /* iPad en modo retrato */
+    .start-page {
+        width: 80vw; /* Aumenta el ancho */
+        padding: 30px; /* Reduce aún más el padding */
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+
+    img {
+        width: 60%; /* Ajusta el tamaño de la imagen */
+    }
+
+    .start-components {
+        flex-direction: column; /* Coloca los elementos en columna */
+        gap: 20px; /* Reduce el espacio entre los componentes */
+    }
+
+    button {
+        height: 80px; /* Ajusta el tamaño del botón */
+        font-size: 30px; /* Ajusta el tamaño de la fuente */
+    }
+
+    h1 {
+        font-size: 50px; /* Ajusta el tamaño del encabezado */
+    }
 }
