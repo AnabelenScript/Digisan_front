@@ -14,13 +14,14 @@
 .navbar-components {
   display: flex;
   width: 100%;
-  gap: 70%;
+  gap: 60%;
   align-items: center;
 }
 
 .navbar-links {
+  width: 80%;
   display: flex;
-  gap: 80px;
+  gap: 60px;
   font-family: "Kdam Thmor Pro", sans-serif;
   font-weight: 400;
   font-size: 22px;
@@ -32,6 +33,7 @@
   position: relative;
   cursor: pointer;
 }
+
 
 .menu__link::before {
   content: '';

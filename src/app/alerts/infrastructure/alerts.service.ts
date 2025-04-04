@@ -41,7 +41,7 @@ export class AlertsService {
     });
   }
 
-  alertLoading(tipo: string) {
+  alertLoading(tipo: string, secs: number) {
     Swal.fire({
       html: `
         <div class="loader-container">
@@ -77,6 +77,7 @@ export class AlertsService {
       showCancelButton: false,
       showConfirmButton: false,
       focusConfirm: false,
+      timer: secs*1000,
       customClass: {
         popup: 'custom-popup-style',
         htmlContainer: 'swal-class-container-load'

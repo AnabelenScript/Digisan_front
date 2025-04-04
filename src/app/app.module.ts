@@ -24,6 +24,7 @@ import { StartPageComponent } from './shared/start-page/start-page.component';
 import { ConectionFormComponent } from './users/UI/components/conection-form/conection-form.component';
 import { ConectionPageComponent } from './users/UI/pages/conection-page/conection-page.component';
 import { LoadAnimationComponent } from './alerts/UI/load-animation/load-animation.component';
+import { RegisterClientComponent } from './users/UI/components/register-client/register-client.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { LoadAnimationComponent } from './alerts/UI/load-animation/load-animatio
     StartPageComponent,
     ConectionFormComponent,
     ConectionPageComponent,
-    LoadAnimationComponent
+    LoadAnimationComponent,
+    RegisterClientComponent
   ],
   imports: [
     BrowserModule,
