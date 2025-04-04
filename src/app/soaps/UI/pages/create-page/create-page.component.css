@@ -39,3 +39,9 @@
 iframe{
     touch-action: none;
 }
+
+@media screen and (max-width: 768px) {
+    .sketchfab-container {
+      display: none;
+    }
+}

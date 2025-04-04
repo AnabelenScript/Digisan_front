@@ -3,7 +3,8 @@
 .wrapper {
   font-family: "Kdam Thmor Pro", sans-serif;
   font-weight: 400;
-  margin-top: 120px;
+  margin-top: 100px;
+  margin-bottom: 60px;
   --input-focus: #0067c7;
   --font-color: #323232;
   --font-color-sub: #666;
@@ -15,7 +16,7 @@
     /* align-items: center; */
     
 }
-/* switch card */
+
 .switch {
   position: relative;
   display: flex;
@@ -102,7 +103,6 @@
   text-decoration: underline;
 }
 
-/* card */ 
 
 .flip-card__inner {
   width: 420px;
@@ -194,7 +194,7 @@
 .btn {
   position: relative;
   font-size: 18px;
-  width: 18.8vw;
+  width: 320px;
   border-radius: 5px;
   text-transform: uppercase;
   text-decoration: none;
@@ -240,3 +240,4 @@
   transform: scaleX(1.4) scaleY(1.6);
   opacity: 0;
 }
+
