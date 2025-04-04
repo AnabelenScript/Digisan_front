@@ -24,8 +24,6 @@ export class LoginFormComponent {
   ){}
 
   login(): void {
-    console.log("Intentando iniciar sesión con el usuario: ", this.user);
-  
     this.userService.login(this.user.Email, this.user.Contrasena).subscribe(
       response => {
         console.log("Respuesta recibida: ", response);
@@ -44,7 +42,6 @@ export class LoginFormComponent {
   }
   
   register(): void {
-    console.log("Guardando usuario en localStorage:", this.user);
     localStorage.setItem('new-user', JSON.stringify(this.user));
     this.router.navigate(['/connection']); 
 }

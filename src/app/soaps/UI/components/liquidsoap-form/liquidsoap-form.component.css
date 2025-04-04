@@ -30,7 +30,7 @@ h1, button {
 .options-container button {
     padding: 10px;
     color: #000000;
-    width: 10vw;
+    width: 16vw;
     height: 14vh;
     border: solid 3px #0000008e;
     border-radius: 10px;
@@ -42,11 +42,11 @@ h1, button {
 .start {
     padding: 10px;
     color: white;
-    width: 15vw;
+    width: 22vw;
     height: 14vh;
     border-radius: 10px;
     background-color:#3A85CB;
-    font-size: 50px;
+    font-size: 48px;
     margin-top: 40px;
     margin-bottom: 40px;
 }
@@ -60,4 +60,65 @@ button:hover {
     border: #2c2c2c solid 3px; 
     box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.3); 
 }
+
+@media screen and (max-width: 1024px) { 
+    .liquid-container {
+        width: 90vw;
+        padding: 20px;
+        text-align: center;
+    }
+
+    .liquid-page-title {
+        font-size: 50px;
+    }
+
+    .options-container {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+    }
+
+    .options-container button {
+        width: 20vw;
+        height: 12vh;
+        font-size: 40px;
+    }
+
+    .start {
+        width: 30vw;
+        height: 12vh;
+        font-size: 42px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .liquid-container {
+        width: 95vw;
+        padding: 15px;
+        text-align: center;
+    }
+
+    .liquid-page-title {
+        font-size: 42px;
+    }
+
+    .options-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .options-container button {
+        width: 50vw;
+        height: 10vh;
+        font-size: 36px;
+    }
+
+    .start {
+        width: 60vw;
+        height: 10vh;
+        font-size: 38px;
+    }
+}
+
 

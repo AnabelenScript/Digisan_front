@@ -16,7 +16,7 @@
 h1{
     font-family: "Kdam Thmor Pro", sans-serif;
     font-weight: 400;
-    font-size: 54px;
+    font-size: 50px;
     margin: 0;
 }
 
@@ -28,13 +28,13 @@ h3{
 }
 
 input{
-    width: 60%;
+    width: 75%;
     border: 1px solid #3A85CB ;
-    background-color: #fff;
-    height: 90px;
+    background-color: #eeeeee;
+    height: 70px;
     border-radius: 10px;
     margin: 0;
-    font-size: 60px;
+    font-size: 45px;
     text-align: center;
     outline: none;
 }
@@ -57,7 +57,7 @@ button{
     border: none;
     font-weight: 400;
     color: black;
-    background-color: white;
+    background-color: #eeeeee;
     font-family: "Kdam Thmor Pro", sans-serif;
   }
   
@@ -85,7 +85,7 @@ button{
   }
   
   .btn::after {
-    background-color: #fff;
+    background-color: #eeeeee;
   }
   
   .btn:hover::after {
@@ -93,3 +93,57 @@ button{
     opacity: 0;
   }
   
+
+  @media screen and (max-width: 1024px) { /* iPad en horizontal */
+    .conection-form {
+        width: 60vw; /* Más ancho en pantallas más pequeñas */
+        padding: 50px;
+    }
+
+    h1 {
+        font-size: 38px;
+    }
+
+    h3 {
+        font-size: 24px;
+        width: 80%;
+    }
+
+    input {
+        width: 70%;
+        font-size: 38px;
+        height: 60px;
+    }
+
+    .btn {
+        width: 60%;
+        font-size: 20px;
+    }
+}
+
+@media screen and (max-width: 768px) { /* iPad en vertical */
+    .conection-form {
+        width: 75vw; /* Se hace aún más ancho */
+        padding: 40px;
+    }
+
+    h1 {
+        font-size: 38px;
+    }
+
+    h3 {
+        font-size: 22px;
+        width: 90%;
+    }
+
+    input {
+        width: 80%;
+        font-size: 38px;
+        height: 60px;
+    }
+
+    .btn {
+        width: 70%;
+        font-size: 18px;
+    }
+}

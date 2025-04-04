@@ -17,7 +17,7 @@ img {
 
 .start-components {
     display: flex;
-    gap: 80px;
+    gap: 100px;
 }
 
 button {
@@ -42,59 +42,56 @@ h1 {
     font-size: 78px;
 }
 
-/* Media Queries para hacer los estilos responsivos */
 
-@media (max-width: 1024px) {
-    /* iPad en modo paisaje */
+@media (max-width: 1324px) {
     .start-page {
-        width: 70vw; /* Ajusta el ancho */
-        padding: 40px; /* Reduce el padding */
+        width: 70vw;
+        padding: 40px; 
         margin-top: 50px;
         margin-bottom: 40px;
     }
 
     img {
-        width: 30%; /* Ajusta el tamaño de la imagen */
+        width: 30%; 
     }
 
     .start-components {
-        gap: 40px; /* Reduce el espacio entre los componentes */
+        gap: 40px; 
     }
 
     button {
-        height: 100px; /* Reduce el tamaño del botón */
-        font-size: 40px; /* Reduce el tamaño de la fuente */
+        height: 100px; 
+        font-size: 40px;
     }
 
     h1 {
-        font-size: 60px; /* Ajusta el tamaño del encabezado */
+        font-size: 72px; 
     }
 }
 
 @media (max-width: 768px) {
-    /* iPad en modo retrato */
     .start-page {
-        width: 80vw; /* Aumenta el ancho */
-        padding: 30px; /* Reduce aún más el padding */
+        width: 80vw; 
+        padding: 30px; 
         margin-top: 30px;
         margin-bottom: 30px;
     }
 
     img {
-        width: 60%; /* Ajusta el tamaño de la imagen */
+        width: 20%; 
     }
 
     .start-components {
-        flex-direction: column; /* Coloca los elementos en columna */
-        gap: 20px; /* Reduce el espacio entre los componentes */
+        flex-direction: column; 
+        gap: 20px; 
     }
 
     button {
-        height: 80px; /* Ajusta el tamaño del botón */
-        font-size: 30px; /* Ajusta el tamaño de la fuente */
+        height: 80px; 
+        font-size: 30px;
     }
 
     h1 {
-        font-size: 50px; /* Ajusta el tamaño del encabezado */
+        font-size: 50px;
     }
 }

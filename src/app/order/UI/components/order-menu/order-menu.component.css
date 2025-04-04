@@ -33,7 +33,7 @@ h1{
 button{
     padding: 10px;
     color: white;
-    width: 18vw;
+    width: 22vw;
     height: 38vh;
     border: 0;
     border-radius: 18px;
@@ -52,4 +52,58 @@ button{
 button:hover{
     background-color: #2b74b8;
     box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+@media screen and (max-width: 1024px) {
+    .menu {
+        width: 90vw;
+        padding: 20px;
+    }
+
+    .menu-title {
+        font-size: 50px;
+        text-align: center;
+    }
+
+    .options {
+        gap: 40px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    button {
+        width: 40vw;
+        height: 30vh;
+    }
+
+    h2 {
+        font-size: 36px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .menu {
+        width: 95vw;
+        padding: 15px;
+    }
+
+    .menu-title {
+        font-size: 42px;
+        text-align: center;
+    }
+
+    .options {
+        gap: 20px;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    button {
+        width: 80vw;
+        height: 25vh;
+    }
+
+    h2 {
+        font-size: 32px;
+    }
 }
