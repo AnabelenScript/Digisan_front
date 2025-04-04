@@ -10,7 +10,7 @@ import { iUserClient } from "../domain/models/userClient";
 })
 
 export class UserService implements UserGateway {
-    private apiURL = 'http://localhost:8000'
+    private apiURL = 'http://54.85.123.137'
     constructor(private http: HttpClient) {}
 
     getAll(): Observable<Users[]>{

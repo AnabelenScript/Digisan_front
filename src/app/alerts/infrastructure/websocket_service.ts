@@ -13,7 +13,7 @@ export class WebSocketService {
 
   connect(): void {
     if (typeof window !== 'undefined' && window.WebSocket) {  
-      const wsUrl = 'ws://localhost:8001/ws';
+      const wsUrl = 'ws://44.214.196.44/ws';
 
       this.socket = new WebSocket(wsUrl);
 

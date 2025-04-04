@@ -8,7 +8,7 @@ import { Soaps } from "../domain/models/soaps";
     providedIn: 'root'
 })
 export class SoapService implements SoapGateway {
-    private apiURL = 'http://localhost:8000/soaps';
+    private apiURL = 'http://54.85.123.137/soaps';
 
     constructor(private http: HttpClient) {}
 
