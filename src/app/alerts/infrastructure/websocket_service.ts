@@ -21,10 +21,15 @@ export class WebSocketService {
         console.log('Conexión WebSocket abierta');
       };
       this.socket.onmessage = (event) => {
-        const message = event.data;
-        console.log('Mensaje recibido:', message);
-        this.messageSubject.next(message); 
+        try {
+          const data = JSON.parse(event.data);
+          console.log('Mensaje recibido y parseado:', data);
+          this.messageSubject.next(data);
+        } catch (error) {
+          console.error('Error al parsear el mensaje JSON:', error);
+        }
       };
+      
       this.socket.onerror = (error) => {
         console.error('Error en WebSocket:', error);
       };

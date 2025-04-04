@@ -24,23 +24,17 @@ export class LoginFormComponent {
   ){}
 
   login(): void {
-    console.log("entre a login con el siguiente usuario: ", this.user);
-
+    console.log("Intentando iniciar sesión con el usuario: ", this.user);
+  
     this.userService.login(this.user.Email, this.user.Contrasena).subscribe(
       response => {
         console.log("Respuesta recibida: ", response);
-
+  
         const token = response.token;
         const usuario = response.user;
         localStorage.setItem('token', token);
-        localStorage.setItem('user', JSON.stringify(usuario));
-        if (usuario.rol === 1) {
-          alert("Eres un usuario");
-          this.router.navigate(["/dashboard"]);
-        } else if (usuario.rol === 2) {
-          alert("Eres un admin");
-          this.router.navigate(["/soaps"]);
-        }
+        localStorage.setItem('loggedUser', JSON.stringify(usuario));
+        this.router.navigate(["/dashboard"]);
       },
       error => {
         alert('Credenciales incorrectas');
@@ -48,6 +42,7 @@ export class LoginFormComponent {
       }
     );
   }
+  
   register(): void {
     console.log("Guardando usuario en localStorage:", this.user);
     localStorage.setItem('new-user', JSON.stringify(this.user));
