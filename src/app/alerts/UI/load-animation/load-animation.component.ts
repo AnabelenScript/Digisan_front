@@ -44,7 +44,7 @@ export class LoadAnimationComponent implements OnInit {
   }
 
   alertLoad(liquid: string) {
-    this.alertService.alertLoading(liquid);
+    this.alertService.alertLoading(liquid, 10);
   }
   alertWarning(tipo: string, codigoMaquina: number) {
     this.alertService.alertLowLevel(tipo, codigoMaquina);

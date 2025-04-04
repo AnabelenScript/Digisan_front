@@ -17,6 +17,6 @@ export class LiquidsoapFormComponent {
   }
 
   start() {
-    this.alertService.alertLoading('liquido')
+    this.alertService.alertLoading('liquido', 5)
   }
 }
