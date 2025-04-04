@@ -7,4 +7,5 @@ export abstract class UserGateway {
     abstract create(users: Users): Observable<Users>;
     abstract update(id: number, iuser: Users): Observable<Users>;
     abstract login(Email: string, Contraseña: string): Observable<{ token: string; user: any }>;
+    abstract createClient(users: Users): Observable<Users>;
 }
