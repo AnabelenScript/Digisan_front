@@ -25,7 +25,7 @@
       </div>
       <div class="check">
         <div class="checkbox-wrapper">
-          <input type="checkbox" id="polvo" [checked]="tipoJabon === 'polvo'" (change)="seleccionarTipo('polvo')">
+          <input type="checkbox" id="polvo" [checked]="tipoJabon === 'En polvo'" (change)="seleccionarTipo('En polvo')">
           <label for="polvo">
             <div class="tick_mark"></div>
           </label>
@@ -46,6 +46,5 @@
     </div>
   </div>
 
-  <button class="button" (click)="guardarJabon()"> Guardar </button>
+  <button class="btn" (click)="guardarJabon()">Guardar</button>
 </div>
-

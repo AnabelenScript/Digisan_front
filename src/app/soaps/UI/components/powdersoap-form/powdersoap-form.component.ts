@@ -10,7 +10,7 @@ import { HttpClient } from '@angular/common/http';
 export class PowdersoapFormComponent {
   selectedButton: string = '';
   showAlert: boolean = false;
-  esp32URL: string = 'http://192.168.1.117'; //la ip unu
+  esp32URL: string = 'http://192.168.1.3'; //la ip unu
 
   constructor(private alertService: AlertsService, private http: HttpClient) {}
 
