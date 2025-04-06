@@ -10,6 +10,7 @@ import { SoapsPageComponent } from './soaps/UI/pages/soaps-page/soaps-page.compo
 import { StartPageComponent } from './shared/start-page/start-page.component';
 import { ConectionPageComponent } from './users/UI/pages/conection-page/conection-page.component';
 import { LoadAnimationComponent } from './alerts/UI/load-animation/load-animation.component';
+import { FormMpComponent } from './payments/UI/components/form-mp/form-mp.component';
 import { RegisterClientComponent } from './users/UI/components/register-client/register-client.component'
 
 const routes: Routes = [
@@ -22,6 +23,7 @@ const routes: Routes = [
   {path: 'dashboard', component: StartPageComponent},
   {path: 'connection', component: ConectionPageComponent},
   {path: 'load', component: LoadAnimationComponent},
+  {path: 'payment', component: FormMpComponent},
   {path: 'register-client', component: RegisterClientComponent },
 ];
 @NgModule({
