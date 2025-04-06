@@ -1,64 +1,113 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Subject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class WebSocketService {
-
   private socket: WebSocket | null = null;
   private messageSubject: Subject<any> = new Subject<any>();
+  private reconnectAttempts = 0;
+  private maxReconnectAttempts = 5;
+  private reconnectInterval = 3000; // 3 segundos
+  private connectionUrl: string;
 
-  messages$ = this.messageSubject.asObservable();
+  public messages$: Observable<any> = this.messageSubject.asObservable();
 
-  connect(): void {
-    if (typeof window !== 'undefined' && window.WebSocket) {  
-      const wsUrl = 'ws://52.202.202.197/ws';
+  constructor() {
+    // Configura la URL basada en el entorno
+    this.connectionUrl = this.getWebSocketUrl();
+  }
 
-      this.socket = new WebSocket(wsUrl);
+  public connect(): void {
+    if (this.socket && (this.socket.readyState === WebSocket.OPEN || this.socket.readyState === WebSocket.CONNECTING)) {
+      console.warn('Ya existe una conexión WebSocket activa o en conexión');
+      return;
+    }
 
-      this.socket.onopen = () => {
-        console.log('Conexión WebSocket abierta');
-      };
-      this.socket.onmessage = (event) => {
-        try {
-          const data = JSON.parse(event.data);
-          console.log('Mensaje recibido y parseado:', data);
-          this.messageSubject.next(data);
-        } catch (error) {
-          console.error('Error al parsear el mensaje JSON:', error);
-        }
-      };
+    if (typeof window === 'undefined' || !('WebSocket' in window)) {
+      console.error('WebSocket no está disponible en este entorno');
+      return;
+    }
+
+    this.socket = new WebSocket(this.connectionUrl);
+
+    this.socket.onopen = () => {
+      console.log('Conexión WebSocket establecida');
+      this.reconnectAttempts = 0; // Resetear intentos de reconexión
+    };
+
+    this.socket.onmessage = (event) => {
+      try {
+        const data = JSON.parse(event.data);
+        this.messageSubject.next(data);
+      } catch (error) {
+        console.error('Error al parsear el mensaje WebSocket:', error, 'Datos recibidos:', event.data);
+      }
+    };
+
+    this.socket.onerror = (error) => {
+      console.error('Error en WebSocket:', error);
+    };
+
+    this.socket.onclose = (event) => {
+      if (event.wasClean) {
+        console.log(`Conexión cerrada limpiamente, código: ${event.code}, razón: ${event.reason}`);
+      } else {
+        console.error('Conexión perdida, intentando reconectar...');
+        this.handleReconnection();
+      }
+    };
+  }
+
+  private handleReconnection(): void {
+    if (this.reconnectAttempts < this.maxReconnectAttempts) {
+      this.reconnectAttempts++;
+      console.log(`Intento de reconexión ${this.reconnectAttempts}/${this.maxReconnectAttempts}`);
       
-      this.socket.onerror = (error) => {
-        console.error('Error en WebSocket:', error);
-      };
-
-      this.socket.onclose = (event) => {
-        if (event.wasClean) {
-          console.log(`Conexión cerrada de forma limpia: ${event.code}`);
-        } else {
-          console.error('Conexión cerrada con errores');
-        }
-      };
+      setTimeout(() => {
+        this.connect();
+      }, this.reconnectInterval);
     } else {
-      console.error('WebSocket no disponible en este entorno');
+      console.error(`Máximo de intentos de reconexión alcanzado (${this.maxReconnectAttempts})`);
+      this.messageSubject.error('No se pudo reconectar al servidor WebSocket');
     }
   }
 
-  sendMessage(message: string): void {
-    if (this.socket?.readyState === WebSocket.OPEN) {
-      this.socket.send(message);
-      console.log('Mensaje enviado:', message);
-    } else {
-      console.error('No se puede enviar el mensaje. La conexión WebSocket no está abierta.');
+  public sendMessage(message: any): void {
+    if (!this.socket) {
+      console.error('WebSocket no está inicializado');
+      return;
+    }
+
+    if (this.socket.readyState !== WebSocket.OPEN) {
+      console.error('WebSocket no está conectado. Estado:', this.socket.readyState);
+      return;
+    }
+
+    try {
+      const messageStr = typeof message === 'string' ? message : JSON.stringify(message);
+      this.socket.send(messageStr);
+    } catch (error) {
+      console.error('Error al enviar mensaje WebSocket:', error);
     }
   }
 
-  disconnect(): void {
+  public disconnect(): void {
     if (this.socket) {
-      this.socket.close();
-      console.log('Conexión WebSocket cerrada');
+      this.socket.close(1000, 'Cierre solicitado por el cliente');
+      this.socket = null;
     }
   }
+ private getWebSocketUrl(): string {
+  if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+    return 'ws://localhost:8001/ws'; // Para desarrollo local
+  } else {
+    return 'ws://52.202.202.197/ws'; // ⭐ Usa tu IP pública de EC2 aquí
+    // Alternativa mejor (si tienes dominio):
+    // return 'wss://tudominio.com/ws'; // Usa "wss" si tienes HTTPS
+// o si quitamos el fokin puerto del despliegue
+// return ws://${window.location.host}/ws;
+  }
+ }
 }
