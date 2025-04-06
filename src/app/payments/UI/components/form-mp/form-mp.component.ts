@@ -5,6 +5,7 @@ import {
   OnInit,
   PLATFORM_ID
 } from '@angular/core';
+import Swal from 'sweetalert2';
 import { isPlatformBrowser } from '@angular/common';
 import { loadMercadoPago } from '@mercadopago/sdk-js';
 import { ConnService } from '../../../infraestructure/conn_payment';
@@ -74,6 +75,13 @@ export class FormMpComponent implements OnInit {
               formData: any;
             }) => {
               return new Promise<void>((resolve, reject) => {
+                let loadingTimeout: any;
+
+                // Mostrar alerta de "cargando" si pasan 0.5 segundos sin respuesta
+                loadingTimeout = setTimeout(() => {
+                  this.alertServ.loadPayment();
+                }, 500);
+
                 fetch('http://localhost:8000/pay', {
                   method: 'POST',
                   headers: {
@@ -81,12 +89,20 @@ export class FormMpComponent implements OnInit {
                   },
                   body: JSON.stringify(formData)
                 })
-                  .then((response) => response.json())
+                  .then((response) => {
+                    clearTimeout(loadingTimeout); // Limpia el temporizador al recibir respuesta
+                    Swal.close(); // Cierra la alerta de carga
+                    return response.json();
+                  })
                   .then((response) => {
                     console.log('Respuesta del pago:', response);
+                    this.alertServ.alertSuccess("Pago realizado exitosamente"); // Mostrar alerta de éxito
                     resolve(); // correctamente tipado
                   })
                   .catch((error) => {
+                    clearTimeout(loadingTimeout); // Limpia el temporizador si hay un error
+                    Swal.close(); // Cierra la alerta de carga
+                    this.alertServ.alertWrong(); // Mostrar alerta de error en caso de fallo
                     console.error('Error creando el pago:', error);
                     reject(error); // pasamos el error
                   });

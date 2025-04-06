@@ -121,7 +121,7 @@ export class AlertsService {
         <div class="loader-container">
           <div class="loader">
             <div class="loader-bg">
-              <span>Sirviendo</span>
+              <span>Procesando</span>
             </div>
             <div class="drops">
               <div class="drop1"></div>
