@@ -24,6 +24,9 @@ export class RegisterClientComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+  }
+
+  registerClient(): void {
     const loggedUser = localStorage.getItem('loggedUser');
     if (loggedUser) {
       const user = JSON.parse(loggedUser);
@@ -32,9 +35,6 @@ export class RegisterClientComponent implements OnInit {
       alert('No hay datos de usuario logueado.');
       this.router.navigate(['/login']); 
     }
-  }
-
-  registerClient(): void {
     if (!this.client.Nombre || !this.client.Email || !this.client.Contrasena) {
       alert('Por favor completa todos los campos.');
       return;

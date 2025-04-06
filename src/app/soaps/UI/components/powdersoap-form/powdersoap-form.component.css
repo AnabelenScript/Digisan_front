@@ -59,6 +59,7 @@ button:hover {
 .options-container button.active {
     border: #2c2c2c solid 3px; 
     box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.3); 
+    background-color:#F7FDFF66;
 }
 
 @media screen and (max-width: 1024px) { 
