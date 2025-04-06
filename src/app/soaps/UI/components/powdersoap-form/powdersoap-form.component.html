@@ -1,11 +1,12 @@
 <div class="powder-container">
     <h1 class="powder-page-title">
-        Seleccione la cantidad de jabón
+      Seleccione la cantidad de jabón
     </h1>
     <div class="options-container">
-        <button [class.active]="selectedButton === '250g'" (click)="selectButton('250g')">250g</button>
-        <button [class.active]="selectedButton === '500g'" (click)="selectButton('500g')">500g</button>
-        <button [class.active]="selectedButton === '1KG'" (click)="selectButton('1KG')">1KG</button>
+      <button [class.active]="selectedButton === '250g'" (click)="selectButton('250g')">250g</button>
+      <button [class.active]="selectedButton === '500g'" (click)="selectButton('500g')">500g</button>
+      <button [class.active]="selectedButton === '1KG'" (click)="selectButton('1KG')">1KG</button>
     </div>
     <button class="start" (click)="start()">Comenzar</button>
-</div>
+    <button class="close" (click)="closeDoor()">Cerrar Puerta</button>
+  </div>

@@ -1,13 +1,13 @@
 .create-form{
-    background-color: #f7fdff31;
-    padding: 35px;
+    background-color: #f7fdff49;
+    padding: 30px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 20px;
+    gap: 15px;
     width: 28vw;
-    height: 84vh;
+    height: 68vh;
     font-family: "Kdam Thmor Pro", sans-serif;
     font-weight: 400;
     border-radius: 15px;
@@ -15,17 +15,17 @@
 
 h2{
     font-weight: 400;
-    font-size: 30px;
+    font-size: 26px;
     border: 0;
     padding: 0;
     margin: 0;
 }
 label{
-    font-size: 22px;
+    font-size: 20px;
 }
 
 input{
-    height: 50px;
+    height: 45px;
     font-size: 20px;
     background-color: #f7fdff46;
     border-radius: 10px;
@@ -37,13 +37,20 @@ input::placeholder{
 }
 
 input:active{
-    border-color: #3A85CB;
+    border: none;
 }
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 
 .form{
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 5px;
     width: 100%;
     height: auto;
 }
@@ -76,68 +83,62 @@ input:active{
 }
 
 
-.button {
-  --color: #0046a9;
-  background-color: #f7fdff46;
-  border-radius: .3em;
+.btn {
   position: relative;
-  overflow: hidden;
-  cursor: pointer;
-  transition: .3s; 
-  font-weight: 400;
-  font-size: 20px;
-  border: 3px solid #3A85CB;
-  font-family: "Kdam Thmor Pro", sans-serif;
-  text-transform: uppercase;
-  color: black;
-  z-index: 1;
-  border-radius: 10px;
+  font-size: 18px;
   width: 100%;
-  height: 55px; 
+  border-radius: 5px;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 0.6em 2em;
+  display: inline-block;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: none;
+  font-weight: 400;
+  color: rgb(255, 255, 255);
+  background-color: #3a85cb;
+  font-family: "Kdam Thmor Pro", sans-serif;
 }
 
-.button::before, .button::after {
-  content: '';
-  display: block;
-  width: 60px;
-  height: 60px;
-  transform: translate(-50%, -50%);
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.btn:active {
+  transform: translateY(-1px);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.btn::after {
+  content: "";
+  display: inline-block;
+  height: 100%;
+  border-radius: 5px;
+  width: 100%;
   position: absolute;
-  border-radius: 50%;
+  top: 0;
+  left: 0;
   z-index: -1;
-  background-color: #3A85CB;
-  transition: 0.4s ease;
+  transition: all 0.4s;
 }
 
-.button::before {
-  top: -1.5em; 
-  left: -1.5em; 
+.btn::after {
+  background-color: #3a85cb;
 }
 
-.button::after {
-  left: calc(100% + 1.5em);
-  top: calc(100% + 1.5em); 
+.btn:hover::after {
+  transform: scaleX(1.4) scaleY(1.6);
+  opacity: 0;
 }
 
-.button:hover::before, .button:hover::after {
-  height: 600px; 
-  width: 600px; 
-}
-
-.button:hover {
-  color: rgb(255, 255, 255); 
-  border-color: white;
-  box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.3); 
-}
-
-.button:active {
-  filter: brightness(.8);
-}
 
 .check{
   display: flex;
-  flex-direction: column;
   gap: 10px;
+  justify-content: center;
+  align-items: center;
 }
  
 .checkbox-wrapper * {
@@ -268,3 +269,5 @@ input:active{
   transform: translate(0);
   opacity: 1;
 }
+
+

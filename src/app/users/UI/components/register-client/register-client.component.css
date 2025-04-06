@@ -1,0 +1,124 @@
+.register-page{
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.wrapper {
+    font-family: "Kdam Thmor Pro", sans-serif;
+    font-weight: 400;
+    margin-top: 80px;
+    margin-bottom: 60px;
+    --input-focus: #0067c7;
+    --font-color: #323232;
+    --font-color-sub: #666;
+    --bg-color: #fff;
+    --bg-color-alt: #666;
+    --main-color: #323232;
+  }
+  
+  .flip-card__front {
+    margin-left: 0%;
+  }
+  
+  .flip-card__front, .flip-card__back {
+    padding: 20px;
+    width: 420px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #f7fdff63;
+    gap: 20px;
+    height: auto;
+    padding-bottom: 60px;
+    border-radius: 5px;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.305);
+  }
+  
+  .flip-card__form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+  }
+  
+  .title {
+    margin: 20px 0 20px 0;
+    font-size: 45px;
+    font-weight: 900;
+    text-align: center;
+    color: white;
+    text-shadow: -1px -1px 0 #323232,
+                1px -1px 0 #323232,
+                -1px 1px 0 #323232,
+                1px 1px 0 #323232;
+  }
+  
+  .flip-card__input {
+    width: 300px;
+    height: 60px;
+    border-radius: 5px;
+    background-color: var(--bg-color);
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.305);
+    font-size: 20px;
+    color: var(--font-color);
+    outline: none;
+    border: 0;
+    padding: 0 10px;
+  }
+  
+  .flip-card__input::placeholder {
+    color: var(--font-color-sub);
+    opacity: 0.8;
+  }
+  
+  .btn {
+    position: relative;
+    font-size: 18px;
+    width: 320px;
+    border-radius: 5px;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 0.8em 2em;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: none;
+    font-weight: 400;
+    color: black;
+    background-color: white;
+    font-family: "Kdam Thmor Pro", sans-serif;
+  }
+  
+  .btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  }
+  
+  .btn:active {
+    transform: translateY(-1px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  .btn::after {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    border-radius: 5px;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: all 0.4s;
+  }
+  
+  .btn::after {
+    background-color: #fff;
+  }
+  
+  .btn:hover::after {
+    transform: scaleX(1.4) scaleY(1.6);
+    opacity: 0;
+  }

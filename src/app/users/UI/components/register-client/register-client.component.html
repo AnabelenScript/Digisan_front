@@ -1,0 +1,13 @@
+<app-navbar></app-navbar>
+<div class="register-page">
+<div class="wrapper">
+    <div class="register-client flip-card__front">
+      <h2 class="title">Registrar Cliente</h2>
+      <form class="flip-card__form">
+        <input class="flip-card__input" id="nombre" type="text" [(ngModel)]="client.Nombre" name="nombre" placeholder="Nombre" required>
+        <input class="flip-card__input" id="email" type="email" [(ngModel)]="client.Email" name="email" placeholder="Email" required>
+        <input class="flip-card__input" id="password" type="password" [(ngModel)]="client.Contrasena" name="password" placeholder="Contraseña" required>
+        <button type="button" class="btn" (click)="registerClient()">Registrar Cliente</button>
+      </form>
+    </div>
+  </div></div>

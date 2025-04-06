@@ -3,14 +3,14 @@ import { Observable } from "rxjs";
 import { Users } from "../domain/models/users";
 import { HttpClient } from "@angular/common/http";
 import { UserGateway } from "../domain/gateways/users_gateways";
-
+import { iUserClient } from "../domain/models/userClient";
 
 @Injectable({
     providedIn: 'root'
 })
 
 export class UserService implements UserGateway {
-    private apiURL = 'http://localhost:8000'
+    private apiURL = 'http://3.81.193.22'
     constructor(private http: HttpClient) {}
 
     getAll(): Observable<Users[]>{
@@ -30,8 +30,12 @@ export class UserService implements UserGateway {
     }
 
     login(Email: string, Contrasena: string): Observable<{ token: string, user: Users }> {
-        console.log("eto etoi loh¡gueando", { Email, Contrasena });
+        console.log("eto etoi loh¡gueando", { Email, Contrasena }); //jajajajaja
         return this.http.post<{ token: string, user: Users }>(`${this.apiURL}/login`, { Email, Contrasena });
+    }
+
+    createClient(users: Users): Observable<Users> {
+        return this.http.post<Users>(`${this.apiURL}/users-client`, users)
     }
     
 }

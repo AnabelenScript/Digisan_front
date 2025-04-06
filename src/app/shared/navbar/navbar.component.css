@@ -1,58 +1,106 @@
-.Navbar{
-    width: 100%;
-    height: 100px;
-    position: relative;
-    background-color: #f7fdff46;
-    box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.3);
-    border: 0;
-    margin: 0;
-    display: flex;
-    align-items: center;
-    border-bottom: 1px solid #3A85CB;
+.Navbar {
+  width: 100%;
+  height: 100px;
+  position: relative;
+  background-color: #f7fdff46;
+  box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.3);
+  border: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #3A85CB;
 }
 
-.navbar-components{
-    display: flex;
-    width: 100%;
-    gap: 70%;
+.navbar-components {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+  padding-right: 20px;
 }
 
-.navbar-links{
-    display: flex;
-    gap: 80px;
-    font-family: "Kdam Thmor Pro", sans-serif;
-    font-weight: 400;
-    font-size: 22px;
-
-
+.navbar-links {
+  width: 75%;
+  display: flex;
+  justify-content: right;
+  padding-right: 20px;
+  gap: 70px;
+  font-family: "Kdam Thmor Pro", sans-serif;
+  font-weight: 400;
+  font-size: 22px;
 }
 
-  .menu__link {
-    color: #000000;
-    line-height: 2;
-    position: relative;
-    cursor: pointer;
-  }
+.menu__link {
+  color: #000000;
+  line-height: 2;
+  position: relative;
+  cursor: pointer;
   
-  .menu__link::before {
-    content: '';
-    width: 100%;
-    height: 2px;
-    border-radius: 2px;
-    background-color: #000000;
-    position: absolute;
-    bottom: -.5rem;
-    left: 0;
-    transition: transform .4s, opacity .4s;
-    opacity: 0;
-  }
-  
-  .menu__link:hover::before {
-    transform: translateY(-.55rem);
-    opacity: 1;
+}
+
+
+.menu__link::before {
+  content: '';
+  width: 100%;
+  height: 2px;
+  border-radius: 2px;
+  background-color: #000000;
+  position: absolute;
+  bottom: -.5rem;
+  left: 0;
+  transition: transform .4s, opacity .4s;
+  opacity: 0;
+}
+
+.menu__link:hover::before {
+  transform: translateY(-.55rem);
+  opacity: 1;
+}
+
+img {
+  width: 50px;
+  margin-left: 50px;
+}
+
+@media (max-width: 1124px) {
+  .Navbar {
+      height: 80px;
   }
 
-img{
-    width: 3%;
-    margin-left: 50px;
+  .navbar-links {
+      gap: 35px; 
+      font-size: 20px; 
+      width: 55%;
+      align-items: center;
+      justify-content:center ;
+  }
+
+  img {
+      width: 40px; 
+  }
+}
+
+
+@media (max-width: 830px) {
+  .Navbar {
+      height: 70px; 
+  }
+
+  .navbar-components {
+      display: flex;
+      align-items: center; 
+  }
+
+  .navbar-links {
+      gap: 40px;
+      font-size: 18px;
+      display: flex;
+      align-items: center; 
+      width: 60%;
+  }
+
+  img {
+      width: 35px; 
+      margin-left: 35px;
+  }
 }
