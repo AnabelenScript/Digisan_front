@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Users } from '../../../../domain/models/users';
 import { UserService } from '../../../../infraestructure/users_service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login-form',
@@ -35,14 +36,25 @@ export class LoginFormComponent {
         this.router.navigate(["/dashboard"]);
       },
       error => {
-        alert('Credenciales incorrectas');
+        Swal.fire({
+          icon: 'error',
+          title: 'Error de autenticación',
+          text: 'Credenciales incorrectas o usuario no encontrado',
+          confirmButtonText: 'Intentar de nuevo',
+          background: '#fff',
+          customClass: {
+            popup: 'mi-alerta',
+            title: 'mi-titulo',
+            confirmButton: 'mi-boton'
+          }
+        });        
         console.error("Error en login: ", error);
       }
     );
   }
-  
+
   register(): void {
     localStorage.setItem('new-user', JSON.stringify(this.user));
     this.router.navigate(['/connection']); 
-}
+  }
 }

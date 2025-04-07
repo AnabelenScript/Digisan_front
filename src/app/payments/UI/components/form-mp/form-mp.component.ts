@@ -101,7 +101,7 @@ export class FormMpComponent implements OnInit {
                   this.alertServ.loadPayment();
                 }, 500);
 
-                fetch('http://localhost:8010/pay', {
+                fetch('http://54.156.96.62:8010/pay', {
                   method: 'POST',
                   headers: {
                     'Content-Type': 'application/json'
