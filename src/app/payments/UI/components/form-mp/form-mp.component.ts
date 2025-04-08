@@ -11,6 +11,8 @@ import { loadMercadoPago } from '@mercadopago/sdk-js';
 import { ConnService } from '../../../infraestructure/conn_payment';
 import { PaymentsMpService } from '../../../infraestructure/mercadopago_payment';
 import { AlertsService } from '../../../../alerts/infrastructure/alerts.service';
+import { UserService } from '../../../infraestructure/create-user-service'; // Importa el servicio de usuario
+import { Router } from '@angular/router'; // Importa Router para redirigir después de la transacción exitosa
 
 @Component({
   selector: 'app-form-mp',
@@ -27,7 +29,9 @@ export class FormMpComponent implements OnInit {
     @Inject(PLATFORM_ID) private platformId: Object,
     private mpServ: ConnService,
     private payMpServ: PaymentsMpService,
-    private alertServ: AlertsService
+    private alertServ: AlertsService,
+    private userService: UserService, 
+    private router: Router 
   ) {}
 
   async ngOnInit() {
@@ -53,7 +57,24 @@ export class FormMpComponent implements OnInit {
           customization: {
             visual: {
               style: {
-                theme: 'default'
+                theme: 'custom',
+                customVariables: {
+                  baseColor: '#3a85cb', 
+                  buttonTextColor: '#ffffff', 
+                  formBackgroundColor: '#f7fdff63',
+                  inputBackgroundColor: '#ffffff', 
+                  inputBorderColor: '#cccccc',
+                  inputTextColor: '#000000',
+                  labelColor: '#333333',
+                  errorColor: '#e74c3c',
+                  buttonWidth: '300px', 
+                  buttonHeight: '20px', 
+                  inputHeight: '45px',
+                  formPadding: '15px', 
+                  inputPadding: '10px',
+                  borderRadius: '5px', 
+                  buttonBorderRadius: '5px' 
+                }
               }
             },
             paymentMethods: {
@@ -76,13 +97,11 @@ export class FormMpComponent implements OnInit {
             }) => {
               return new Promise<void>((resolve, reject) => {
                 let loadingTimeout: any;
-
-                // Mostrar alerta de "cargando" si pasan 0.5 segundos sin respuesta
                 loadingTimeout = setTimeout(() => {
                   this.alertServ.loadPayment();
                 }, 500);
 
-                fetch('http://localhost:8000/pay', {
+                fetch('http://54.156.96.62:8010/pay', {
                   method: 'POST',
                   headers: {
                     'Content-Type': 'application/json'
@@ -90,21 +109,37 @@ export class FormMpComponent implements OnInit {
                   body: JSON.stringify(formData)
                 })
                   .then((response) => {
-                    clearTimeout(loadingTimeout); // Limpia el temporizador al recibir respuesta
-                    Swal.close(); // Cierra la alerta de carga
+                    clearTimeout(loadingTimeout); 
+                    Swal.close(); 
                     return response.json();
                   })
                   .then((response) => {
                     console.log('Respuesta del pago:', response);
-                    this.alertServ.alertSuccess("Pago realizado exitosamente"); // Mostrar alerta de éxito
-                    resolve(); // correctamente tipado
+                    this.alertServ.alertSuccess("Pago realizado exitosamente"); 
+                    const storedUser = localStorage.getItem('new-user');
+                    if (storedUser) {
+                      const user = JSON.parse(storedUser);
+                      this.userService.create(user).subscribe(
+                        (response) => {
+                          console.log('Usuario creado exitosamente:', response);
+                          localStorage.removeItem('new-user');
+                          this.router.navigate(['/dashboard']);
+                        },
+                        (error) => {
+                          console.error('Error creando el usuario:', error);
+                          this.alertServ.alertWrong();
+                        }
+                      );
+                    } 
+
+                    resolve();
                   })
                   .catch((error) => {
-                    clearTimeout(loadingTimeout); // Limpia el temporizador si hay un error
-                    Swal.close(); // Cierra la alerta de carga
-                    this.alertServ.alertWrong(); // Mostrar alerta de error en caso de fallo
+                    clearTimeout(loadingTimeout); 
+                    Swal.close();
+                    this.alertServ.alertWrong();
                     console.error('Error creando el pago:', error);
-                    reject(error); // pasamos el error
+                    reject(error);
                   });
               });
             },

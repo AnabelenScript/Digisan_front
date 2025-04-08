@@ -240,3 +240,23 @@
   opacity: 0;
 }
 
+::ng-deep .mi-alerta {
+  border-radius: 16px;
+  font-family: "Kdam Thmor Pro", sans-serif !important;
+  height: 400px;
+}
+
+::ng-deep .mi-titulo {
+  font-weight: bold;
+  font-size: 1.5rem;
+  color: #ad1457;
+  font-family: "Kdam Thmor Pro", sans-serif !important;
+}
+
+::ng-deep .mi-boton {
+  background-color: #ec407a !important;
+  color: white !important;
+  font-weight: bold;
+  border-radius: 8px !important;
+  font-size: 18px;
+}

@@ -1,4 +1,5 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { Subject, Observable } from 'rxjs';
 
 @Injectable({
@@ -10,16 +11,23 @@ export class WebSocketService {
   private reconnectAttempts = 0;
   private maxReconnectAttempts = 5;
   private reconnectInterval = 3000; // 3 segundos
-  private connectionUrl: string;
+  private connectionUrl: string = '';
 
   public messages$: Observable<any> = this.messageSubject.asObservable();
 
-  constructor() {
-    // Configura la URL basada en el entorno
-    this.connectionUrl = this.getWebSocketUrl();
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) {
+    // Solo configurar la URL si estamos en el navegador
+    if (isPlatformBrowser(this.platformId)) {
+      this.connectionUrl = this.getWebSocketUrl();
+    }
   }
 
   public connect(): void {
+    if (!isPlatformBrowser(this.platformId)) {
+      console.warn('WebSocket no se puede usar en SSR');
+      return;
+    }
+
     if (this.socket && (this.socket.readyState === WebSocket.OPEN || this.socket.readyState === WebSocket.CONNECTING)) {
       console.warn('Ya existe una conexión WebSocket activa o en conexión');
       return;
@@ -64,7 +72,7 @@ export class WebSocketService {
     if (this.reconnectAttempts < this.maxReconnectAttempts) {
       this.reconnectAttempts++;
       console.log(`Intento de reconexión ${this.reconnectAttempts}/${this.maxReconnectAttempts}`);
-      
+
       setTimeout(() => {
         this.connect();
       }, this.reconnectInterval);
@@ -99,15 +107,18 @@ export class WebSocketService {
       this.socket = null;
     }
   }
- private getWebSocketUrl(): string {
-  if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
-    return 'ws://localhost:8001/ws'; // Para desarrollo local
-  } else {
-    return 'ws://52.202.202.197/ws'; // ⭐ Usa tu IP pública de EC2 aquí
-    // Alternativa mejor (si tienes dominio):
-    // return 'wss://tudominio.com/ws'; // Usa "wss" si tienes HTTPS
-// o si quitamos el fokin puerto del despliegue
-// return ws://${window.location.host}/ws;
+
+  private getWebSocketUrl(): string {
+    if (!isPlatformBrowser(this.platformId)) {
+      return '';
+    }
+
+    if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+      return 'ws://localhost:8001/ws'; // Para desarrollo local
+    } else {
+      return 'ws://52.202.202.197/ws'; // Dirección IP pública o dominio
+      // return 'wss://tudominio.com/ws'; // Si usas HTTPS y dominio
+      // return `ws://${window.location.host}/ws`; // alternativa si despliegas en misma máquina
+    }
   }
- }
 }
