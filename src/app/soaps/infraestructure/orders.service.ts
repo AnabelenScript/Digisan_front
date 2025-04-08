@@ -10,9 +10,13 @@ import { OrderGateway } from "../domain/gateways/orders_gateways";
 
 export class OrderService implements OrderGateway {
     constructor(private httpClient: HttpClient) {}
-    private apiURL = 'http://3.81.193.22/orders';
+    private apiURL = 'http://3.81.193.22/order';
 
     create(order: Order): Observable<Order>{
-       return this.httpClient.post<Order>(this.apiURL, order)
+       return this.httpClient.post<Order>(`${this.apiURL}/servo`, order)
     }
+
+    createLiquid(order: Order): Observable<Order>{
+        return this.httpClient.post<Order>(`${this.apiURL}/bomba`, order)
+     }
 }

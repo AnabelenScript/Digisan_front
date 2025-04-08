@@ -21,12 +21,12 @@ export class SoapService implements SoapGateway {
     }
 
     create(soap: Soaps): Observable<Soaps> {
-        const token = localStorage.getItem('token');  // Asegúrate de que el token esté en el localStorage
+        const token = localStorage.getItem('token'); 
         if (!token) {
             throw new Error("Token no encontrado");
         }
     
-        console.log("Token enviado:", token);  // Verifica que el token esté correctamente en el formato 'Bearer <token>'
+        console.log("Token enviado:", token);  
         
         const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
         return this.http.post<Soaps>(this.apiURL, soap, { headers });
@@ -34,7 +34,7 @@ export class SoapService implements SoapGateway {
     
 
     update(id: number, soap: Soaps): Observable<Soaps> {
-        const token = localStorage.getItem('token');  // Asegúrate de que el token esté en el localStorage
+        const token = localStorage.getItem('token');  
         if (!token) {
             throw new Error("Token no encontrado");
         }
@@ -44,7 +44,7 @@ export class SoapService implements SoapGateway {
     }
 
     delete(id: number): Observable<void> {
-        const token = localStorage.getItem('token');  // Asegúrate de que el token esté en el localStorage
+        const token = localStorage.getItem('token'); 
         if (!token) {
             throw new Error("Token no encontrado");
         }

@@ -10,7 +10,7 @@ import { Order } from '../../../domain/models/order';
 })
 export class PowdersoapFormComponent implements OnInit {
   selectedButton: string = '';
-  codigoIdentificador: string | null = null; // Almacena el código identificador
+  codigoIdentificador: string | null = null;
 
   constructor(
     private alertService: AlertsService,
@@ -18,7 +18,6 @@ export class PowdersoapFormComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // Intentamos obtener el usuario del localStorage
     if (typeof window !== 'undefined') {
       const storedUser = localStorage.getItem('new-user');
       if (storedUser) {
@@ -33,7 +32,6 @@ export class PowdersoapFormComponent implements OnInit {
   }
 
   start() {
-    // Verificamos que el código identificador existe
     if (!this.codigoIdentificador) {
       this.alertService.alertWrong();
       console.error('Error: No se encontró el código identificador del usuario.');
@@ -49,7 +47,6 @@ export class PowdersoapFormComponent implements OnInit {
       Tipo: false 
     };
   
-    // Asignamos la cantidad según el botón seleccionado
     switch (this.selectedButton) {
       case '250g':
         order.Cantidad = 1;
@@ -65,18 +62,14 @@ export class PowdersoapFormComponent implements OnInit {
         return;
     }
   
-    // Calculamos el tiempo de despacho
     const dispatchTime = order.Cantidad * 5 * 1000; // En milisegundos
   
-    // Mostrar alerta de carga
     this.alertService.alertLoading('Creando despacho', dispatchTime / 1000);
   
-    // Realizamos la petición al backend
     this.orderService.create(order).subscribe(
       response => {
         console.log('Orden creada exitosamente:', response);
         
-        // Esperamos el tiempo de la alerta de "loading" antes de mostrar la de éxito
         setTimeout(() => {
           this.alertService.alertSuccess('¡Despacho creado con éxito!');
         }, dispatchTime);
