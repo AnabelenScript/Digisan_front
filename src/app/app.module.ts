@@ -49,7 +49,7 @@ import { RegisterClientComponent } from './users/UI/components/register-client/r
     ConectionFormComponent,
     ConectionPageComponent,
     LoadAnimationComponent,
-    FormMpComponent
+    FormMpComponent,
     RegisterClientComponent
   ],
   imports: [
