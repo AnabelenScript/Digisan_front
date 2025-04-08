@@ -49,8 +49,8 @@ import { RegisterClientComponent } from './users/UI/components/register-client/r
     ConectionFormComponent,
     ConectionPageComponent,
     LoadAnimationComponent,
+    RegisterClientComponent,
     FormMpComponent
-    RegisterClientComponent
   ],
   imports: [
     BrowserModule,

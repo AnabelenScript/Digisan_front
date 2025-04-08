@@ -1,20 +1,19 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { UserService } from '../../../infraestructure/users_service';
 import { Users } from '../../../domain/models/users';
+
 @Component({
   selector: 'app-conection-form',
   templateUrl: './conection-form.component.html',
-  styleUrl: './conection-form.component.css'
+  styleUrls: ['./conection-form.component.css']
 })
 
 export class ConectionFormComponent {
   codigoIdentificador: string = ''; 
   user: Users | null = null; 
 
-  constructor(private userService: UserService, private router: Router) {}
+  constructor( private router: Router) {}
 
- 
   ngOnInit(): void {
     if (typeof window !== 'undefined') { 
       const storedUser = localStorage.getItem('new-user');
@@ -23,6 +22,7 @@ export class ConectionFormComponent {
       }
     }
   }
+
   guardarDatos(): void {
     if (!this.user) {
       alert("No hay datos de usuario en localStorage.");
@@ -34,16 +34,7 @@ export class ConectionFormComponent {
       return;
     }
     this.user.Codigo_Identificador = String(this.codigoIdentificador); 
-    this.userService.create(this.user).subscribe(
-      response => {
-        console.log("Usuario registrado exitosamente:", response);
-        localStorage.removeItem('new-user'); 
-        this.router.navigate(['/menu']); 
-      },
-      error => {
-        alert('Error al registrar usuario');
-        console.error("Error en el registro:", error);
-      }
-    );
+    localStorage.setItem('new-user', JSON.stringify(this.user));
+    this.router.navigate(['/payment']);
   }
 }

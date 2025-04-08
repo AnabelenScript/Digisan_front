@@ -9,7 +9,7 @@ import { DataMP
 })
 export class PaymentsMpService {
   
-  private apiUrl = 'http://localhost:8000/'
+  private apiUrl = 'http://54.156.96.62:8010/'
 
   constructor(private http: HttpClient) { }
 
