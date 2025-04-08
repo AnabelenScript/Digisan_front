@@ -158,4 +158,21 @@ export class AlertsService {
       }
     });
   }
+
+  alertNoVasePresent() {
+    Swal.fire({
+      icon: "warning",
+      iconColor: "#D02010",
+      title: "Sin vaso detectado",
+      text: "No se puede realizar el despacho porque no hay un vaso presente.",
+      customClass: {
+        popup: 'custom-popup-style',
+        confirmButton: 'swal-button-cofirm',
+        icon: 'icon-swal',
+        title: 'title-swal'
+      }
+    });
+  }
+  
 }
+
