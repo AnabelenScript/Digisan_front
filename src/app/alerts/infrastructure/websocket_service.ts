@@ -114,11 +114,9 @@ export class WebSocketService {
     }
 
     if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
-      return 'ws://localhost:8001/ws'; // Para desarrollo local
+      return 'ws://52.202.202.197/ws'; // Para desarrollo local
     } else {
       return 'ws://52.202.202.197/ws'; // Dirección IP pública o dominio
-      // return 'wss://tudominio.com/ws'; // Si usas HTTPS y dominio
-      // return `ws://${window.location.host}/ws`; // alternativa si despliegas en misma máquina
     }
   }
 }
