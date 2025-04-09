@@ -8,8 +8,6 @@ import {
 import Swal from 'sweetalert2';
 import { isPlatformBrowser } from '@angular/common';
 import { loadMercadoPago } from '@mercadopago/sdk-js';
-import { ConnService } from '../../../infraestructure/conn_payment';
-import { PaymentsMpService } from '../../../infraestructure/mercadopago_payment';
 import { AlertsService } from '../../../../alerts/infrastructure/alerts.service';
 
 @Component({
@@ -25,8 +23,6 @@ export class FormMpComponent implements OnInit {
 
   constructor(
     @Inject(PLATFORM_ID) private platformId: Object,
-    private mpServ: ConnService,
-    private payMpServ: PaymentsMpService,
     private alertServ: AlertsService
   ) {}
 
@@ -77,7 +73,6 @@ export class FormMpComponent implements OnInit {
               return new Promise<void>((resolve, reject) => {
                 let loadingTimeout: any;
 
-                // Mostrar alerta de "cargando" si pasan 0.5 segundos sin respuesta
                 loadingTimeout = setTimeout(() => {
                   this.alertServ.loadPayment();
                 }, 500);
@@ -90,21 +85,21 @@ export class FormMpComponent implements OnInit {
                   body: JSON.stringify(formData)
                 })
                   .then((response) => {
-                    clearTimeout(loadingTimeout); // Limpia el temporizador al recibir respuesta
-                    Swal.close(); // Cierra la alerta de carga
+                    clearTimeout(loadingTimeout); 
+                    Swal.close();
                     return response.json();
                   })
                   .then((response) => {
                     console.log('Respuesta del pago:', response);
-                    this.alertServ.alertSuccess("Pago realizado exitosamente"); // Mostrar alerta de éxito
-                    resolve(); // correctamente tipado
+                    this.alertServ.alertSuccess("Pago realizado exitosamente"); 
+                    resolve();
                   })
                   .catch((error) => {
-                    clearTimeout(loadingTimeout); // Limpia el temporizador si hay un error
-                    Swal.close(); // Cierra la alerta de carga
-                    this.alertServ.alertWrong(); // Mostrar alerta de error en caso de fallo
+                    clearTimeout(loadingTimeout);
+                    Swal.close();
+                    this.alertServ.alertWrong(); 
                     console.error('Error creando el pago:', error);
-                    reject(error); // pasamos el error
+                    reject(error);
                   });
               });
             },
@@ -123,10 +118,5 @@ export class FormMpComponent implements OnInit {
 
       renderPaymentBrick(bricksBuilder);
     }
-  }
-
-  validateEmail(email: string): boolean {
-    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return re.test(String(email).toLowerCase());
   }
 }

@@ -25,7 +25,8 @@ import { ConectionFormComponent } from './users/UI/components/conection-form/con
 import { ConectionPageComponent } from './users/UI/pages/conection-page/conection-page.component';
 import { LoadAnimationComponent } from './alerts/UI/load-animation/load-animation.component';
 import { FormMpComponent } from './payments/UI/components/form-mp/form-mp.component';
-import { RegisterClientComponent } from './users/UI/components/register-client/register-client.component'
+import { RegisterClientComponent } from './users/UI/components/register-client/register-client.component';
+import { NotificationComponent } from './alerts/UI/notification/notification.component'
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { RegisterClientComponent } from './users/UI/components/register-client/r
     ConectionPageComponent,
     LoadAnimationComponent,
     FormMpComponent
-    RegisterClientComponent
+    RegisterClientComponent,
+    NotificationComponent
   ],
   imports: [
     BrowserModule,
