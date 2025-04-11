@@ -19,10 +19,10 @@ export class LiquidsoapFormComponent implements OnInit {
 
   ngOnInit(): void {
     if (typeof window !== 'undefined') {
-      const storedUser = localStorage.getItem('new-user');
+      const storedUser = localStorage.getItem('loggedUser');
       if (storedUser) {
         const user = JSON.parse(storedUser);
-        this.codigoIdentificador = user.Codigo_Identificador || null;
+        this.codigoIdentificador = user.codigo_identificador || null;
       }
     }
   }
@@ -44,7 +44,7 @@ export class LiquidsoapFormComponent implements OnInit {
       Estado: 2, 
       Costo: 10, 
       Codigo_Identificador: this.codigoIdentificador, // Código dinámico
-      Tipo: true 
+      Tipo: false
     };
 
     switch (this.selectedButton) {
@@ -67,7 +67,7 @@ export class LiquidsoapFormComponent implements OnInit {
 
     this.alertService.alertLoading('Creando despacho', dispatchTime / 1000);
 
-    this.orderService.createLiquid(order).subscribe(
+    this.orderService.create(order).subscribe(
       response => {
         console.log('Orden creada exitosamente:', response);
 

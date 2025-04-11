@@ -30,7 +30,7 @@ export class RegisterClientComponent implements OnInit {
     const loggedUser = localStorage.getItem('loggedUser');
     if (loggedUser) {
       const user = JSON.parse(loggedUser);
-      this.client.Codigo_Identificador = user.Codigo_Identificador;
+      this.client.Codigo_Identificador = user.codigo_identificador;
     } else {
       alert('No hay datos de usuario logueado.');
       this.router.navigate(['/login']); 
