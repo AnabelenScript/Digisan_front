@@ -19,10 +19,11 @@ export class PowdersoapFormComponent implements OnInit {
 
   ngOnInit(): void {
     if (typeof window !== 'undefined') {
-      const storedUser = localStorage.getItem('new-user');
+      const storedUser = localStorage.getItem('loggedUser');
       if (storedUser) {
         const user = JSON.parse(storedUser);
-        this.codigoIdentificador = user.Codigo_Identificador || null;
+        console.log(user.codigo_identificador);
+        this.codigoIdentificador = user.codigo_identificador || null;
       }
     }
   }
@@ -43,8 +44,8 @@ export class PowdersoapFormComponent implements OnInit {
       Cantidad: 0,
       Estado: 2, 
       Costo: 10, 
-      Codigo_Identificador: this.codigoIdentificador, // Código dinámico
-      Tipo: false 
+      Codigo_Identificador: this.codigoIdentificador, 
+      Tipo: true
     };
   
     switch (this.selectedButton) {
